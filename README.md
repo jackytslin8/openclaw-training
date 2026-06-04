@@ -16,6 +16,7 @@ OpenClaw 是一個開源的 AI Agent 框架，由奧地利開發者 **Peter Stei
 - 🐙 [GitHub](https://github.com/openclaw/openclaw)
 - 🛒 [技能市集 ClawHub](https://clawhub.com)
 - 🇹🇼 [台灣開放資料工具](https://hub.twinkleai.tw/skills/tw-opendata-tools)
+- [風險：API金鑰遭竊「2天噴掉260萬」](https://tw.stock.yahoo.com/news/%E4%BB%96api%E9%87%91%E9%91%B0%E9%81%AD%E7%AB%8A-2%E5%A4%A9%E5%99%B4%E6%8E%89260%E8%90%AC-3%E4%BA%BA%E5%B0%8F%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%87%A8%E7%A0%B4%E7%94%A2%E5%8D%B1%E6%A9%9F-102100094.html)
 
 ---
 
