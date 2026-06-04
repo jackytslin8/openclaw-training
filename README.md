@@ -45,7 +45,7 @@ Peter Steinberger 認為：
 
 ---
 
-## 四、實際應用案例（10 個場景）
+## 四、實際應用案例（7 個場景）
 
 ### 案例 1：🌤️ 每日天氣預報推送
 
@@ -86,6 +86,24 @@ Peter Steinberger 認為：
 - **效果**：幾分鐘內完成可玩的遊戲
 [消消樂.html](https://github.com/user-attachments/files/28584778/default.html)
 [暗棋_Longcat.html](https://github.com/user-attachments/files/28584871/_Longcat.html)
+
+### 案例 6：即時Ubike數量查詢
+
+- **情境**：想查詢即時ubike站點資訊
+- **做法**：自然語言描述，例：目前力行路23號上的ubike站點，可借的腳踏車資訊
+- **效果**：透過API，提供即時資訊
+- <img width="457" height="413" alt="image" src="https://github.com/user-attachments/assets/3659b06d-46c7-41f1-84d0-1b05390b8575" />
+<img width="470" height="98" alt="image" src="https://github.com/user-attachments/assets/0bf2f476-3eea-4e56-94da-a467a6edf3fe" />
+
+### 案例 7：實價登錄查詢
+
+- **情境**：想查詢土地實價登錄資訊
+- **做法**：自然語言描述，例：新竹市力行路23號的實價登錄
+- **效果**：透過twinkle hub API查詢
+<img width="472" height="276" alt="image" src="https://github.com/user-attachments/assets/86c6ad76-c449-4cd7-89b2-8e4188ba3b51" />
+<img width="466" height="342" alt="image" src="https://github.com/user-attachments/assets/5b2c8d7a-7d5f-4f34-b6ee-a102062f4b32" />
+<img width="464" height="412" alt="image" src="https://github.com/user-attachments/assets/0963ded0-9e9a-4b12-a05e-c3fe3d6fa637" />
+
 
 ## 五、更多創意應用點子
 
