@@ -1,4 +1,4 @@
-[電費趨勢_echarts.html](https://github.com/user-attachments/files/28584413/_echarts.html)# 🤖 OpenClaw AI Agent
+# 🤖 OpenClaw AI Agent
 
 > 「AI 不再只是聊天機器人，而是一個能幫你做事的數位員工。」
 
@@ -60,7 +60,7 @@ Peter Steinberger 認為：
 - **情境**：Gmail 收到台電帳單 email，手動抄金額很煩
 - **做法**：偵測帳單 email → 自動提取金額/電號 → 寫入 Google Sheets
 - **效果**：完全自動，還能計算信用卡回饋
-
+[電費趨勢_echarts.html](https://github.com/user-attachments/files/28584413/_echarts.html)
 
 ### 案例 3：🎓 Excel 報表線上化
 
