@@ -77,7 +77,8 @@ Peter Steinberger 認為：
 - **效果**：比較建議，一目了然
 - <img width="506" height="232" alt="2026-06-04_134237" src="https://github.com/user-attachments/assets/d9e0e5e5-80b8-40d4-8320-96b0fa04c21d" />
 <img width="497" height="228" alt="2026-06-04_134258" src="https://github.com/user-attachments/assets/f41beeed-1b64-41f6-8a7d-79d08f3bc2ce" />
-<img width="1091" height="288" alt="2026-06-04_134426" src="https://github.com/user-attachments/assets/9ecb2234-7679-4721-bbdd-b1d068a5540a" />
+<img width="1003" height="276" alt="2026-06-04_140540" src="https://github.com/user-attachments/assets/be0896cc-7c00-4387-909f-4c4464efe7ed" />
+
 
 ### 案例 5：🎮 做遊戲互動
 
