@@ -51,6 +51,9 @@ Peter Steinberger 認為：
 - **情境**：每天早上要知道會不會下雨
 - **做法**：Cron job 每天 06:00 自動抓中央氣象署資料 → 整理三時段預報 + 穿衣建議 → 推送到 Telegram
 - **效果**：起床就能看，不用開任何 app
+<img width="558" height="321" alt="2026-06-04_143146" src="https://github.com/user-attachments/assets/605c732a-a3c1-4e72-9af5-cb31a73be492" />
+<img width="558" height="321" alt="2026-06-04_143146" src="https://github.com/user-attachments/assets/9e205bd4-174b-4f7d-a959-0e5256fb418f" />
+
 
 ### 案例 2：🔌 水電帳單自動記錄
 
