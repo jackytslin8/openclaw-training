@@ -31,7 +31,7 @@ Peter Steinberger 認為：
 - 📖 [文字版介紹](https://www.binance.com/zh-TC/square/post/298256668078434)
 - 🎬 [影片版介紹](https://www.facebook.com/watch/?v=1608171953553214)
 
-<video src="https://raw.githubusercontent.com/jackytslin8/openclaw-training/master/openclaw%E8%B5%B7%E6%BA%90%20(480p).mp4" width="600" controls></video>
+<video src="./openclaw%E8%B5%B7%E6%BA%90%20(480p).mp4" width="600" controls autoplay muted loop></video>
 
 ---
 
