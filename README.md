@@ -45,7 +45,7 @@ Peter Steinberger 認為：
 
 ---
 
-## 四、實際應用案例（7 個場景）
+## 四、實際應用案例（8 個場景）
 
 ### 案例 1：🌤️ 每日天氣預報推送
 
@@ -75,7 +75,7 @@ Peter Steinberger 認為：
 - **情境**：整修工程廠商報價格式雜亂
 - **做法**：ocr辨識、建立比較表
 - **效果**：比較建議，一目了然
-- <img width="506" height="232" alt="2026-06-04_134237" src="https://github.com/user-attachments/assets/d9e0e5e5-80b8-40d4-8320-96b0fa04c21d" />
+ <img width="506" height="232" alt="2026-06-04_134237" src="https://github.com/user-attachments/assets/d9e0e5e5-80b8-40d4-8320-96b0fa04c21d" />
 <img width="497" height="228" alt="2026-06-04_134258" src="https://github.com/user-attachments/assets/f41beeed-1b64-41f6-8a7d-79d08f3bc2ce" />
 <img width="1003" height="276" alt="2026-06-04_140540" src="https://github.com/user-attachments/assets/be0896cc-7c00-4387-909f-4c4464efe7ed" />
 
@@ -93,7 +93,7 @@ Peter Steinberger 認為：
 - **情境**：想查詢即時ubike站點資訊
 - **做法**：自然語言描述，例：目前力行路23號上的ubike站點，可借的腳踏車資訊
 - **效果**：透過API，提供即時資訊
-- <img width="457" height="413" alt="image" src="https://github.com/user-attachments/assets/3659b06d-46c7-41f1-84d0-1b05390b8575" />
+ <img width="457" height="413" alt="image" src="https://github.com/user-attachments/assets/3659b06d-46c7-41f1-84d0-1b05390b8575" />
 <img width="470" height="98" alt="image" src="https://github.com/user-attachments/assets/0bf2f476-3eea-4e56-94da-a467a6edf3fe" />
 
 ### 案例 7：實價登錄查詢
@@ -104,6 +104,15 @@ Peter Steinberger 認為：
 <img width="472" height="276" alt="image" src="https://github.com/user-attachments/assets/86c6ad76-c449-4cd7-89b2-8e4188ba3b51" />
 <img width="466" height="342" alt="image" src="https://github.com/user-attachments/assets/5b2c8d7a-7d5f-4f34-b6ee-a102062f4b32" />
 <img width="464" height="412" alt="image" src="https://github.com/user-attachments/assets/0963ded0-9e9a-4b12-a05e-c3fe3d6fa637" />
+
+## 案例 8：寫腳本自動簽到
+- **情境**：某網站每天自動簽到賺點數
+- **做法**：openclaw插件 Playwright + chromium，無頭瀏覽器
+- **效果**：寫腳本，自動搶Longcat內測名額 (演唱會門票，嘘~~)
+<img width="399" height="614" alt="2026-06-05_103102" src="https://github.com/user-attachments/assets/c3edc4cc-ccdd-4efc-b356-5d428a401e10" />
+<img width="306" height="503" alt="image" src="https://github.com/user-attachments/assets/9f277e7c-5759-43ee-b13e-2147849b7a27" />
+<img width="297" height="585" alt="image" src="https://github.com/user-attachments/assets/49d1adae-38b3-4a63-ad61-fdbd3a833b6f" />
+
 
 
 ## 五、更多創意應用點子
