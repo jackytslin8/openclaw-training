@@ -30,8 +30,7 @@ Peter Steinberger 認為：
 
 - 📖 [文字版介紹](https://www.binance.com/zh-TC/square/post/298256668078434)
 - 🎬 [影片版介紹](https://www.facebook.com/watch/?v=1608171953553214)
-
-- 節錄 (https://streamable.com/nvw8fj)
+- 影片節錄 (https://streamable.com/nvw8fj)
 
 ---
 
