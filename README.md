@@ -107,7 +107,7 @@ Peter Steinberger 認為：
 
 ## 案例 8：寫腳本自動簽到
 - **情境**：某網站每天自動簽到賺點數
-- **做法**：openclaw插件 Playwright + chromium，無頭瀏覽器
+- **做法**：openclaw插件 **Playwright + chromium**，無頭瀏覽器
 - **效果**：寫腳本，自動搶LonCat內測名額 (演唱會門票！？ 嘘~~)
 <img width="399" height="614" alt="2026-06-05_103102" src="https://github.com/user-attachments/assets/c3edc4cc-ccdd-4efc-b356-5d428a401e10" />
 <img width="306" height="503" alt="image" src="https://github.com/user-attachments/assets/9f277e7c-5759-43ee-b13e-2147849b7a27" />
