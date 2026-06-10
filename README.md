@@ -122,6 +122,8 @@ Peter Steinberger 認為：
 - **做法**：新增twinkle hub技能，詢問「30年來死亡率趨勢，合併出生率的圖表，html格式」
 - **效果**：圖表上 2019 年有個明顯的 ✕ 標記，就是兩條線交叉的位置。滑鼠移上去可以看到每年的詳細數字。少子化 + 高齡化的「剪刀差」非常明顯 😬
 - [taiwan_birth_death_rate_30y.html](https://github.com/user-attachments/files/28782481/taiwan_birth_death_rate_30y.html)
+- [taiwan_birth_death_30y_people.html](https://github.com/user-attachments/files/28783766/taiwan_birth_death_30y_people.html)
+
 
 ## 五、更多創意應用點子
 
