@@ -102,7 +102,7 @@ Peter Steinberger 認為：
 ### 案例 7：🏘️ 實價登錄查詢
 
 - **情境**：想查詢土地實價登錄資訊
-- **做法**：prompt：幫我新增twinkle hub (https://hub.twinkleai.tw/dashboard) 
+- **做法**：prompt：幫我新增twinkle hub ("https://hub.twinkleai.tw/dashboard") 
 api key：xxxxxxx
 - **效果**：透過twinkle hub API查詢，例：新竹市力行路23號的實價登錄
 <img width="472" height="276" alt="image" src="https://github.com/user-attachments/assets/86c6ad76-c449-4cd7-89b2-8e4188ba3b51" />
