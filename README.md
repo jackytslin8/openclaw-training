@@ -62,7 +62,7 @@ Peter Steinberger 認為：
 - **情境**：Gmail 收到台電帳單 email，手動抄金額很煩
 - **做法**：偵測帳單 email → 自動提取金額/電號 → 寫入 Google Sheets
 - **效果**：完全自動，還能計算信用卡回饋
-- [電費趨勢_echarts.html](https://github.com/user-attachments/files/28778082/_echarts.html)
+- [電費趨勢_echarts](https://github.com/user-attachments/files/28778082/_echarts.html)
 
 
 ### 案例 3：🎓 Excel 報表線上化
@@ -88,8 +88,8 @@ Peter Steinberger 認為：
 - **情境**：想快速做一個小遊戲
 - **做法**：自然語言描述需求 → AI 寫出網頁遊戲（消消樂、暗棋）
 - **效果**：幾分鐘內完成可玩的遊戲
-[消消樂.html](https://github.com/user-attachments/files/28584778/default.html)
-[暗棋_Longcat.html](https://github.com/user-attachments/files/28584871/_Longcat.html)
+[消消樂](https://github.com/user-attachments/files/28584778/default.html)
+[暗棋_Longcat](https://github.com/user-attachments/files/28584871/_Longcat.html)
 
 ### 案例 6：🚲︎ 即時Ubike數量查詢
 
@@ -121,8 +121,8 @@ Peter Steinberger 認為：
 - **情境**：Chart.js 趨勢圖 — 30 年出生率vs死亡率變化一目瞭然
 - **做法**：新增twinkle hub技能，詢問「30年來死亡率趨勢，合併出生率的圖表，html格式」
 - **效果**：圖表上 2019 年有個明顯的 ✕ 標記，就是兩條線交叉的位置。滑鼠移上去可以看到每年的詳細數字。少子化 + 高齡化的「剪刀差」非常明顯 😬
-- [taiwan_birth_death_rate_30y.html](https://github.com/user-attachments/files/28782481/taiwan_birth_death_rate_30y.html)
-- [taiwan_birth_death_30y_people.html](https://github.com/user-attachments/files/28783766/taiwan_birth_death_30y_people.html)
+- [📊 台灣出生 vs 死亡人數 — 30 年交叉趨勢](https://github.com/user-attachments/files/28783766/taiwan_birth_death_30y_people.html)
+- [📊 台灣出生 vs 死亡 — 2015~2026 最新趨勢](https://github.com/user-attachments/files/28784088/taiwan_birth_death_2015_2026.html)
 
 
 ## 五、更多創意應用點子
