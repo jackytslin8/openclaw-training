@@ -46,7 +46,7 @@ Peter Steinberger 認為：
 
 ---
 
-## 四、實際應用案例（8 個場景）
+## 四、實際應用案例（9 個場景）
 
 ### 案例 1：🌤️ 每日天氣預報推送
 
@@ -108,7 +108,7 @@ Peter Steinberger 認為：
 <img width="466" height="342" alt="image" src="https://github.com/user-attachments/assets/5b2c8d7a-7d5f-4f34-b6ee-a102062f4b32" />
 <img width="464" height="412" alt="image" src="https://github.com/user-attachments/assets/0963ded0-9e9a-4b12-a05e-c3fe3d6fa637" />
 
-## 案例 8：寫腳本自動簽到
+### 案例 8：寫腳本自動簽到
 - **情境**：某網站每天自動簽到賺點數
 - **做法**：openclaw插件 **Playwright + chromium**，無頭瀏覽器
 - **效果**：寫腳本，自動搶LonCat內測名額 (演唱會門票！？ 嘘~~<img width="24" height="24" alt="1f92b" src="https://github.com/user-attachments/assets/624537c1-81d5-467f-bb67-b783853595ec" />
@@ -117,7 +117,11 @@ Peter Steinberger 認為：
 <img width="306" height="503" alt="image" src="https://github.com/user-attachments/assets/9f277e7c-5759-43ee-b13e-2147849b7a27" />
 <img width="297" height="585" alt="image" src="https://github.com/user-attachments/assets/49d1adae-38b3-4a63-ad61-fdbd3a833b6f" />
 
-
+### 案例 9：中華民國30年來出生率vs死亡率變化
+- **情境**：Chart.js 趨勢圖 — 30 年出生率vs死亡率變化一目瞭然
+- **做法**：新增twinkle hub技能，詢問「30年來死亡率趨勢，合併出生率的圖表，html格式」
+- **效果**：圖表上 2019 年有個明顯的 ✕ 標記，就是兩條線交叉的位置。滑鼠移上去可以看到每年的詳細數字。少子化 + 高齡化的「剪刀差」非常明顯 😬
+- [taiwan_birth_death_rate_30y.html](https://github.com/user-attachments/files/28782481/taiwan_birth_death_rate_30y.html)
 
 ## 五、更多創意應用點子
 
