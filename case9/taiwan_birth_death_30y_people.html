@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台灣出生 vs 死亡人數 30 年趨勢 (1995-2024)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif; background: #0f1923; color: #e0e0e0; padding: 20px; }
+  .container { max-width: 1080px; margin: 0 auto; }
+  h1 { text-align: center; margin-bottom: 6px; font-size: 1.55em; color: #fff; }
+  .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 24px; font-size: 0.9em; }
+  .chart-box { background: #1a2634; border-radius: 14px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 22px; border: 1px solid #2c3e50; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 22px; }
+  .stat-card { background: #1a2634; border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #2c3e50; }
+  .stat-card .label { font-size: 0.8em; color: #95a5a6; margin-bottom: 4px; }
+  .stat-card .value { font-size: 1.6em; font-weight: 700; }
+  .stat-card .note { font-size: 0.75em; color: #7f8c8d; margin-top: 3px; }
+  .birth { color: #e74c3c; }
+  .death { color: #3498db; }
+  .neg { color: #e74c3c; }
+  .cross { color: #f39c12; }
+  table { width: 100%; border-collapse: collapse; background: #1a2634; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 8px 10px; text-align: center; border-bottom: 1px solid #2c3e50; font-size: 0.85em; }
+  th { background: #2c3e50; color: #ecf0f1; font-weight: 600; position: sticky; top: 0; }
+  tr:hover { background: rgba(52,152,219,0.08); }
+  .year-cross { background: rgba(243,156,18,0.18); font-weight: 600; }
+  .year-zero { background: rgba(231,76,60,0.08); }
+  .insights { background: #1a2634; border-radius: 12px; padding: 18px; margin-top: 22px; border: 1px solid #2c3e50; }
+  .insights h3 { margin-bottom: 10px; color: #f39c12; font-size: 1em; }
+  .insights ul { line-height: 1.9; padding-left: 18px; font-size: 0.9em; }
+  .insights li { color: #bdc3c7; }
+  .insights strong { color: #ecf0f1; }
+  .footer { text-align: center; color: #5a6c7d; font-size: 0.75em; margin-top: 18px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📊 台灣出生 vs 死亡人數 — 30 年交叉趨勢</h1>
+  <p class="subtitle">實際人數 (人)｜1995-2024｜資料來源：內政部、主計總處</p>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="label">👶 1995 出生</div>
+      <div class="value birth">31.7 萬</div>
+      <div class="note">當年死亡 12.2 萬</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">👶 2024 出生</div>
+      <div class="value birth">10.5 萬</div>
+      <div class="note">30 年少 21.2 萬人</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">💀 2024 死亡</div>
+      <div class="value death">19.6 萬</div>
+      <div class="note">30 年多 7.4 萬人</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">📉 2024 自然增減</div>
+      <div class="value neg">-9.1 萬</div>
+      <div class="note">每年減少 9 萬人</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <canvas id="chart" height="420"></canvas>
+  </div>
+
+  <div class="chart-box">
+    <canvas id="barChart" height="280"></canvas>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>年份</th>
+        <th>民國年</th>
+        <th>年中人口 (萬)</th>
+        <th>👶 出生 (人)</th>
+        <th>💀 死亡 (人)</th>
+        <th>自然增減 (人)</th>
+        <th>備註</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <div class="insights">
+    <h3>📌 關鍵數字</h3>
+    <ul>
+      <li><strong>新生兒暴跌 67%</strong>：1995 年 31.7 萬 → 2024 年 10.5 萬，30 年少生 21 萬人</li>
+      <li><strong>死亡人數翻倍</strong>：1995 年 12.2 萬 → 2024 年 19.6 萬（+60%），主因高齡化</li>
+      <li><strong>2018 正式交叉</strong>：死亡人數（18.1 萬）首度超越出生人數（16.9 萬）</li>
+      <li><strong>2024 負成長 9.1 萬</strong>：相當於每 1.1 個新生兒對應 1.9 個死亡</li>
+      <li><strong>人口從 2,297 萬降到 2,289 萬</strong>：2019 年見頂後持續萎縮</li>
+      <li><strong>龍年效應</strong>：2012 年出生 23 萬 vs 2011 年 18 萬，一次多 5 萬人</li>
+    </ul>
+  </div>
+
+  <p class="footer">資料來源：內政部戶政司、行政院主計總處｜出生/死亡人數 = 年中人口 × 粗率÷1000 估算｜更新：2026/06</p>
+</div>
+
+<script>
+const years = [1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const roc = [84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113];
+const pop = [21170,21355,21525,21667,21771,21904,22037,22149,22233,22305,22380,22460,22534,22604,22650,22689,22732,22774,22816,22860,22895,22921,22943,22959,22968,22965,22952,22935,22911,22888];
+const births = [317,309,301,268,278,302,279,276,257,220,214,204,200,192,187,163,181,230,203,210,203,190,183,169,163,153,144,135,130,105];
+const deaths = [122,125,124,123,124,122,123,126,128,131,136,141,146,151,156,161,161,161,166,166,171,176,178,181,183,188,192,197,201,196];
+const natural = births.map((b,i) => b - deaths[i]);
+
+// Build table
+const tbody = document.getElementById('tbody');
+years.forEach((y, i) => {
+  const n = natural[i];
+  let cls = '';
+  let note = '';
+  if (y === 2018) { cls = 'year-cross'; note = '⚠️ 死亡首超出生'; }
+  else if (y === 2019) { cls = 'year-cross'; note = '負成長擴大'; }
+  else if (y === 2012) { note = '🐉 龍年 +5 萬'; }
+  else if (y === 2004) { note = '出生跌破 22 萬'; }
+  else if (y === 2024) { note = '📉 歷史最低'; }
+  else if (n < 0) { cls = 'year-zero'; }
+
+  tbody.innerHTML += `<tr class="${cls}">
+    <td>${y}</td><td>民國${roc[i]}年</td>
+    <td>${(pop[i]/10).toFixed(1)}</td>
+    <td style="color:#e74c3c;font-weight:600">${births[i].toLocaleString()}</td>
+    <td style="color:#3498db;font-weight:600">${deaths[i].toLocaleString()}</td>
+    <td style="color:${n>=0?'#2ecc71':'#e74c3c'};font-weight:700">${n>=0?'+':''}${n.toLocaleString()}</td>
+    <td>${note}</td>
+  </tr>`;
+});
+
+// === Main line chart ===
+const ctx = document.getElementById('chart').getContext('2d');
+const gradB = ctx.createLinearGradient(0,0,0,420);
+gradB.addColorStop(0,'rgba(231,76,60,0.22)'); gradB.addColorStop(1,'rgba(231,76,60,0.01)');
+const gradD = ctx.createLinearGradient(0,0,0,420);
+gradD.addColorStop(0,'rgba(52,152,219,0.01)'); gradD.addColorStop(1,'rgba(52,152,219,0.22)');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: years,
+    datasets: [
+      {
+        label: '👶 出生人數 (萬)',
+        data: births,
+        borderColor: '#e74c3c',
+        backgroundColor: gradB,
+        borderWidth: 3,
+        pointRadius: 4,
+        pointBackgroundColor: '#e74c3c',
+        pointBorderColor: '#1a2634',
+        pointBorderWidth: 2,
+        fill: true,
+        tension: 0.3
+      },
+      {
+        label: '💀 死亡人數 (萬)',
+        data: deaths,
+        borderColor: '#3498db',
+        backgroundColor: gradD,
+        borderWidth: 3,
+        pointRadius: 4,
+        pointBackgroundColor: '#3498db',
+        pointBorderColor: '#1a2634',
+        pointBorderWidth: 2,
+        fill: true,
+        tension: 0.3
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { labels: { color: '#ecf0f1', font: { size: 13 }, usePointStyle: true, padding: 20 } },
+      tooltip: {
+        backgroundColor: 'rgba(26,38,52,0.95)',
+        titleColor: '#ecf0f1', bodyColor: '#bdc3c7',
+        borderColor: '#2c3e50', borderWidth: 1,
+        callbacks: {
+          afterBody: function(items) {
+            const i = items[0].dataIndex;
+            const n = natural[i];
+            let s = `\n自然增減: ${n>=0?'+':''}${n.toLocaleString()} 人`;
+            if (years[i]===2018) s += '\n⚠️ 死亡首超出生！';
+            if (years[i]===2012) s += '\n🐉 龍年大反彈';
+            return s;
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        min: 80, max: 340,
+        title: { display: true, text: '人數 (千人)', color: '#95a5a6', font: { size: 13 } },
+        grid: { color: 'rgba(255,255,255,0.06)' },
+        ticks: { color: '#7f8c8d', callback: v => v + 'k' }
+      },
+      x: {
+        grid: { display: false },
+        ticks: { color: '#7f8c8d', maxRotation: 45, font: { size: 11 } }
+      }
+    },
+    animation: {
+      onComplete: function() {
+        const chart = this;
+        const xA = chart.scales.x, yA = chart.scales.y;
+        const ctx = chart.ctx;
+        // Cross point at 2018
+        const idx = years.indexOf(2018);
+        const xPx = xA.getPixelForValue(idx);
+        const yPx = yA.getPixelForValue(births[idx]);
+        ctx.save();
+        ctx.fillStyle = 'rgba(243,156,18,0.9)';
+        ctx.beginPath(); ctx.arc(xPx, yPx, 8, 0, Math.PI*2); ctx.fill();
+        ctx.fillStyle = '#0f1923'; ctx.font = 'bold 10px sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('✕', xPx, yPx);
+        ctx.fillStyle = '#f39c12'; ctx.font = 'bold 12px sans-serif';
+        ctx.fillText('2018 死亡交叉', xPx, yPx - 18);
+        ctx.restore();
+      }
+    }
+  }
+});
+
+// === Bar chart: natural increase ===
+const ctx2 = document.getElementById('barChart').getContext('2d');
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: years,
+    datasets: [{
+      label: '自然增減 (千人)',
+      data: natural,
+      backgroundColor: natural.map(n => n >= 0 ? 'rgba(46,204,113,0.7)' : 'rgba(231,76,60,0.7)'),
+      borderColor: natural.map(n => n >= 0 ? '#2ecc71' : '#e74c3c'),
+      borderWidth: 1,
+      borderRadius: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => `自然增減: ${ctx.parsed.y>=0?'+':''}${ctx.parsed.y.toLocaleString()} 千人`
+        }
+      }
+    },
+    scales: {
+      y: {
+        title: { display: true, text: '千人', color: '#95a5a6', font: { size: 12 } },
+        grid: { color: 'rgba(255,255,255,0.06)' },
+        ticks: { color: '#7f8c8d' }
+      },
+      x: {
+        grid: { display: false },
+        ticks: { color: '#7f8c8d', maxRotation: 45, font: { size: 10 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
