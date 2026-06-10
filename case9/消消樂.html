@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生存戰：五大魔王連擊消消樂</title>
+    <style>
+        body { font-family: sans-serif; background-color: #2c3e50; color: #ecf0f1; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; transition: background-color 0.1s; overflow-x: hidden; }
+        body.damage-flash { background-color: #900 !important; }
+        body.heal-flash { background-color: #060 !important; }
+        h1 { margin-top: 0; font-size: 1.5em; text-align: center; }
+        .character-area { background: #34495e; padding: 15px; border-radius: 15px; width: 300px; text-align: center; margin-bottom: 15px; position: relative; box-sizing: border-box;}
+        #monster-sprite { font-size: 60px; margin-bottom: 5px; display: inline-block; }
+        .shake { animation: shake 0.3s; color: #e74c3c; }
+        .attack-anim { animation: dive 0.4s; }
+        @keyframes shake { 0%, 100% {transform: translateX(0);} 25% {transform: translateX(-15px);} 75% {transform: translateX(15px);} }
+        @keyframes dive { 0%, 100% {transform: translateY(0) scale(1);} 50% {transform: translateY(30px) scale(1.2);} }
+        .bar-container { width: 100%; height: 20px; background-color: #555; border-radius: 10px; overflow: hidden; margin-top: 5px; border: 2px solid #222;}
+        #monster-hp-bar { width: 100%; height: 100%; background-color: #e74c3c; transition: width 0.3s; }
+        #player-hp-bar { width: 100%; height: 100%; background-color: #2ecc71; transition: width 0.3s; }
+        .stats-area { display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.9em; font-weight: bold; }
+        #board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px; }
+        .card { width: 65px; height: 65px; background-color: #2980b9; border-radius: 10px; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 35px; user-select: none; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .card.flipped { background-color: #ecf0f1; cursor: default; }
+        .card.matched { background-color: #f1c40f; cursor: default; opacity: 0.8; }
+        .card .content { display: none; }
+        .card.flipped .content, .card.matched .content { display: block; }
+        #overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.85); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100; }
+        .btn { padding: 15px 30px; font-size: 1.2em; background-color: #e67e22; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: none; margin-top: 10px;}
+        .btn:active { transform: scale(0.95); }
+        #start-btn { display: block; }
+        #game-over-text { font-size: 2em; margin-bottom: 20px; font-weight: bold; color: #fff; display: none; text-align: center; }
+        .float-text { position: absolute; font-size: 24px; font-weight: bold; animation: floatUp 1s forwards; pointer-events: none; }
+        @keyframes floatUp { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-50px); } }
+        .instructions { font-size: 0.85em; color: #bdc3c7; text-align: center; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <div id="game-over-text"></div>
+        <button id="start-btn" class="btn" onclick="startGame(0)">開始挑戰！</button>
+        <button id="next-btn" class="btn" onclick="startGame(currentLevel + 1)">下一關 ➔</button>
+        <button id="restart-btn" class="btn" onclick="startGame(0)">重新挑戰</button>
+    </div>
+
+    <h1 id="level-title">第 1 關</h1>
+    <div class="instructions">消除 💊 或 🍖 可以補血！拯救世界吧！</div>
+    
+    <div class="character-area" id="monster-box">
+        <div id="monster-sprite">👹</div>
+        <div class="bar-container"><div id="monster-hp-bar"></div></div>
+        <div class="stats-area">
+            <span id="monster-name">怪獸 HP:</span>
+            <span><span id="monster-hp-text">250</span></span>
+            <span style="color:#f1c40f;">Combo: <span id="combo-count">0</span></span>
+        </div>
+    </div>
+
+    <div id="board"></div>
+
+    <div class="character-area" style="background:#2c3e50; border: 2px solid #34495e;" id="player-box">
+        <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 5px;">🛡️ 你的血量</div>
+        <div class="bar-container"><div id="player-hp-bar"></div></div>
+        <div class="stats-area">
+            <span>HP: <span id="player-hp-text">150</span> / 150</span>
+        </div>
+    </div>
+
+    <script>
+        const emojis = ['⚔️', '🛡️', '💊', '⚡', '🔥', '❄️', '🍄', '🍖'];
+        
+        // 5個關卡的怪獸設定
+        const levels = [
+            { sprite: '🟢', name: '史萊姆', maxHp: 120, atkInterval: 5000, minDmg: 3, maxDmg: 8 },
+            { sprite: '👺', name: '哥布林', maxHp: 200, atkInterval: 4000, minDmg: 6, maxDmg: 10 },
+            { sprite: '🐗', name: '半獸人', maxHp: 350, atkInterval: 3500, minDmg: 8, maxDmg: 12 },
+            { sprite: '🧛', name: '吸血鬼', maxHp: 500, atkInterval: 3000, minDmg: 10, maxDmg: 15 },
+            { sprite: '🐉', name: '惡龍', maxHp: 700, atkInterval: 2500, minDmg: 12, maxDmg: 18 }
+        ];
+
+        let currentLevel = 0;
+        let monsterHp = 0, maxMonsterHp = 0;
+        let maxPlayerHp = 150, playerHp = maxPlayerHp;
+        let combo = 0, matched = 0, locked = false, flipped = [];
+        let audioCtx, bgmInterval, attackTimer;
+
+        // 音效合成器 (新增滑音效果)
+        function playTone(freq, type, duration, vol=0.1, slideFreq=null) {
+            if(!audioCtx) return;
+            let osc = audioCtx.createOscillator();
+            let gain = audioCtx.createGain();
+            osc.type = type; 
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            if (slideFreq) {
+                // 詭異的滑音效果
+                osc.frequency.exponentialRampToValueAtTime(slideFreq, audioCtx.currentTime + duration);
+            }
+            gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function startBGM() {
+            if(bgmInterval) clearInterval(bgmInterval);
+            let tick = 0;
+            // 越後面的關卡節奏越快、越讓人焦慮
+            let speed = Math.max(120, 300 - (currentLevel * 30)); 
+            
+            bgmInterval = setInterval(() => {
+                if(monsterHp <= 0 || playerHp <= 0) return;
+                
+                // 1. 沉重且壓迫的心跳聲 (低頻 Sawtooth 往下滑音)
+                if (tick % 4 === 0) {
+                    playTone(65, 'sawtooth', 0.3, 0.6, 40); 
+                } else if (tick % 4 === 1) {
+                    playTone(75, 'triangle', 0.2, 0.4, 50);
+                }
+
+                // 2. 詭異的高頻幽靈音 (不和諧音程 + 微幅走音)
+                if (tick % 16 === 0 || tick % 16 === 6) {
+                    let freqs = [311.13, 329.63, 466.16, 622.25]; // 詭異音階
+                    let startFreq = freqs[Math.floor(Math.random() * freqs.length)];
+                    let endFreq = startFreq * (Math.random() > 0.5 ? 1.05 : 0.95); // 產生走音感
+                    playTone(startFreq, 'sine', 1.0, 0.08, endFreq);
+                }
+                
+                // 3. 隨著關卡變難，加入隨機神經質的高頻雜音
+                if (currentLevel >= 2 && Math.random() < 0.08) {
+                    playTone(1500 + Math.random()*1000, 'square', 0.05, 0.02);
+                }
+
+                tick++;
+            }, speed);
+        }
+
+        function startGame(levelIndex) {
+            // 初始化音效
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            
+            currentLevel = levelIndex;
+            let monster = levels[currentLevel];
+            
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('start-btn').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
+            document.getElementById('restart-btn').style.display = 'none';
+            document.getElementById('game-over-text').style.display = 'none';
+            
+            document.getElementById('level-title').innerText = `第 ${currentLevel + 1} 關：${monster.name}`;
+            document.getElementById('monster-sprite').innerText = monster.sprite;
+            document.getElementById('monster-name').innerText = monster.name;
+            
+            maxMonsterHp = monster.maxHp;
+            monsterHp = maxMonsterHp;
+            playerHp = maxPlayerHp; // 每關補滿血
+            combo = 0; matched = 0; locked = false; flipped = [];
+            
+            updateUI();
+            startBGM();
+            
+            // 啟動怪獸攻擊計時器
+            if(attackTimer) clearInterval(attackTimer);
+            attackTimer = setInterval(monsterAttack, monster.atkInterval);
+
+            // 產生版面
+            const board = document.getElementById('board');
+            board.innerHTML = '';
+            let deck = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+            deck.forEach(e => {
+                let card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `<span class="content">${e}</span>`;
+                card.onclick = () => flipCard(card, e);
+                board.appendChild(card);
+            });
+        }
+
+        function flipCard(card, val) {
+            if (locked || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+            playTone(400, 'sine', 0.1, 0.05);
+            card.classList.add('flipped');
+            flipped.push({card, val});
+
+            if (flipped.length === 2) {
+                locked = true;
+                if (flipped[0].val === flipped[1].val) {
+                    playTone(800, 'square', 0.2, 0.1);
+                    flipped.forEach(f => f.card.classList.replace('flipped', 'matched'));
+                    matched += 2; combo++; 
+                    
+                    // 補血機制
+                    if (val === '💊' || val === '🍖') {
+                        playerHp = Math.min(maxPlayerHp, playerHp + 40);
+                        showFloatText('player-box', '+40', '#2ecc71');
+                        playTone(600, 'sine', 0.3, 0.1);
+                        document.body.classList.add('heal-flash');
+                        setTimeout(() => document.body.classList.remove('heal-flash'), 150);
+                    }
+
+                    playerAttack();
+                    flipped = []; locked = false;
+                    
+                    if (matched === 16 && monsterHp > 0 && playerHp > 0) {
+                        setTimeout(() => {
+                            matched = 0;
+                            const board = document.getElementById('board');
+                            board.innerHTML = '';
+                            let deck = [...emojis, ...emojis].sort(() => Math.random() - 0.5);
+                            deck.forEach(e => {
+                                let c = document.createElement('div');
+                                c.className = 'card';
+                                c.innerHTML = `<span class="content">${e}</span>`;
+                                c.onclick = () => flipCard(c, e);
+                                board.appendChild(c);
+                            });
+                        }, 1000); 
+                    }
+                } else {
+                    playTone(200, 'sawtooth', 0.3, 0.1, 100); // 失敗音效加點滑音更煩躁
+                    combo = 0; updateUI();
+                    setTimeout(() => {
+                        flipped.forEach(f => f.card.classList.remove('flipped'));
+                        flipped = []; locked = false;
+                    }, 600);
+                }
+            }
+        }
+
+        function showFloatText(elementId, text, color) {
+            let el = document.getElementById(elementId);
+            let floatEl = document.createElement('div');
+            floatEl.className = 'float-text';
+            floatEl.innerText = text;
+            floatEl.style.color = color;
+            floatEl.style.top = '10px'; floatEl.style.right = '20px';
+            el.appendChild(floatEl);
+            setTimeout(() => floatEl.remove(), 1000);
+        }
+
+        function playerAttack() {
+            let dmg = Math.floor(20 * (1 + (combo - 1) * 0.5));
+            monsterHp = Math.max(0, monsterHp - dmg);
+            
+            let m = document.getElementById('monster-sprite');
+            m.classList.remove('shake'); void m.offsetWidth; m.classList.add('shake');
+            showFloatText('monster-box', '-' + dmg, 'red');
+            
+            updateUI();
+            if (monsterHp <= 0) endGame(true);
+        }
+
+        function monsterAttack() {
+            if(monsterHp <= 0 || playerHp <= 0) return;
+            
+            let monster = levels[currentLevel];
+            let m = document.getElementById('monster-sprite');
+            m.classList.remove('attack-anim'); void m.offsetWidth; m.classList.add('attack-anim');
+            
+            setTimeout(() => {
+                let dmg = Math.floor(Math.random() * (monster.maxDmg - monster.minDmg + 1)) + monster.minDmg;
+                playerHp = Math.max(0, playerHp - dmg);
+                playTone(150, 'sawtooth', 0.4, 0.3, 50); // 受擊音效加滑音
+                
+                showFloatText('player-box', '-' + dmg, 'red');
+                document.body.classList.add('damage-flash');
+                setTimeout(() => document.body.classList.remove('damage-flash'), 150);
+                
+                updateUI();
+                if (playerHp <= 0) endGame(false);
+            }, 200);
+        }
+
+        function updateUI() {
+            document.getElementById('monster-hp-bar').style.width = (monsterHp / maxMonsterHp * 100) + '%';
+            document.getElementById('monster-hp-text').innerText = monsterHp;
+            document.getElementById('player-hp-bar').style.width = (playerHp / maxPlayerHp * 100) + '%';
+            document.getElementById('player-hp-text').innerText = playerHp;
+            document.getElementById('combo-count').innerText = combo;
+            
+            document.getElementById('player-hp-bar').style.backgroundColor = playerHp <= 30 ? '#e74c3c' : '#2ecc71';
+        }
+
+        function endGame(isWin) {
+            clearInterval(attackTimer);
+            clearInterval(bgmInterval);
+            
+            let m = document.getElementById('monster-sprite');
+            let goText = document.getElementById('game-over-text');
+            
+            if (isWin) {
+                m.innerText = '💀';
+                playTone(1000, 'square', 0.5, 0.2);
+                
+                if (currentLevel < levels.length - 1) {
+                    goText.innerHTML = `🎉 擊敗了 ${levels[currentLevel].name}！<br><span style="font-size:0.5em;color:#f1c40f;">準備迎接下一關的挑戰</span>`;
+                    document.getElementById('next-btn').style.display = 'block';
+                } else {
+                    goText.innerHTML = `🏆 傳說誕生！<br><span style="font-size:0.5em;color:#f1c40f;">你擊敗了所有魔王，拯救了世界！</span>`;
+                    document.getElementById('restart-btn').style.display = 'block';
+                }
+            } else {
+                m.innerText = '😈';
+                playTone(100, 'sawtooth', 1, 0.5, 30); // 死亡音效
+                goText.innerHTML = `💀 你被 ${levels[currentLevel].name} 擊倒了...`;
+                document.getElementById('restart-btn').style.display = 'block';
+            }
+            
+            setTimeout(() => {
+                document.getElementById('overlay').style.display = 'flex';
+                goText.style.display = 'block';
+            }, 800);
+        }
+    </script>
+</body>
+</html>
