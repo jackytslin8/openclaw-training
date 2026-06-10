@@ -77,8 +77,9 @@ Peter Steinberger 認為：
 - **情境**：整修工程廠商報價格式雜亂
 - **做法**：ocr辨識、建立比較表
 - **效果**：比較建議，一目了然
- <img width="506" height="232" alt="2026-06-04_134237" src="https://github.com/user-attachments/assets/d9e0e5e5-80b8-40d4-8320-96b0fa04c21d" />
-<img width="497" height="228" alt="2026-06-04_134258" src="https://github.com/user-attachments/assets/f41beeed-1b64-41f6-8a7d-79d08f3bc2ce" />
+
+ <img width="506" height="232" alt="2026-06-04_134237" src="https://github.com/user-attachments/assets/6ed64c6c-e09f-497e-bc9f-b7020ce3008e" />
+<img width="497" height="228" alt="2026-06-04_134258" src="https://github.com/user-attachments/assets/80a4e50a-03c1-4c3c-aed1-bc1cc06308a8" />
 <img width="1003" height="276" alt="2026-06-04_140540" src="https://github.com/user-attachments/assets/be0896cc-7c00-4387-909f-4c4464efe7ed" />
 
 
