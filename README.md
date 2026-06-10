@@ -111,7 +111,7 @@ api key：xxxxxxx
 
 ### 案例 8：✍️ 寫腳本自動簽到
 - **情境**：某網站每天自動簽到賺點數
-- **做法**：openclaw插件 **Playwright + chromium**，無頭瀏覽器
+- **做法**：openclaw插件 **Playwright + chromium**，無頭瀏覽器, chrome新增擴充功能：Get cookies.txt LOCALLY (下載cookies用)
 - **效果**：寫腳本，自動搶LonCat內測名額 (演唱會門票！？ 嘘~~<img width="24" height="24" alt="1f92b" src="https://github.com/user-attachments/assets/624537c1-81d5-467f-bb67-b783853595ec" />
 )
 <img width="399" height="614" alt="2026-06-05_103102" src="https://github.com/user-attachments/assets/c3edc4cc-ccdd-4efc-b356-5d428a401e10" />
