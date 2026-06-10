@@ -88,8 +88,8 @@ Peter Steinberger 認為：
 - **情境**：想快速做一個小遊戲
 - **做法**：自然語言描述需求 → AI 寫出網頁遊戲（消消樂、暗棋）
 - **效果**：幾分鐘內完成可玩的遊戲
-[消消樂](https://github.com/user-attachments/files/28584778/default.html)
-[暗棋_Longcat](https://github.com/user-attachments/files/28584871/_Longcat.html)
+[消消樂](https://jackytslin8.github.io/openclaw-training/case9/消消樂.html)
+[暗棋_Longcat](https://jackytslin8.github.io/openclaw-training/case9/暗棋_Longcat.html)
 
 ### 案例 6：🚲︎ 即時Ubike數量查詢
 
