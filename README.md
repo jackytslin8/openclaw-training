@@ -91,7 +91,7 @@ Peter Steinberger 認為：
 [消消樂.html](https://github.com/user-attachments/files/28584778/default.html)
 [暗棋_Longcat.html](https://github.com/user-attachments/files/28584871/_Longcat.html)
 
-### 案例 6：即時Ubike數量查詢
+### 案例 6：🚲︎ 即時Ubike數量查詢
 
 - **情境**：想查詢即時ubike站點資訊
 - **做法**：自然語言描述，例：目前力行路23號上的ubike站點，可借的腳踏車資訊
@@ -99,7 +99,7 @@ Peter Steinberger 認為：
  <img width="457" height="413" alt="image" src="https://github.com/user-attachments/assets/3659b06d-46c7-41f1-84d0-1b05390b8575" />
 <img width="470" height="98" alt="image" src="https://github.com/user-attachments/assets/0bf2f476-3eea-4e56-94da-a467a6edf3fe" />
 
-### 案例 7：實價登錄查詢
+### 案例 7：🏘️ 實價登錄查詢
 
 - **情境**：想查詢土地實價登錄資訊
 - **做法**：自然語言描述，例：新竹市力行路23號的實價登錄
@@ -108,7 +108,7 @@ Peter Steinberger 認為：
 <img width="466" height="342" alt="image" src="https://github.com/user-attachments/assets/5b2c8d7a-7d5f-4f34-b6ee-a102062f4b32" />
 <img width="464" height="412" alt="image" src="https://github.com/user-attachments/assets/0963ded0-9e9a-4b12-a05e-c3fe3d6fa637" />
 
-### 案例 8：寫腳本自動簽到
+### 案例 8：✍️ 寫腳本自動簽到
 - **情境**：某網站每天自動簽到賺點數
 - **做法**：openclaw插件 **Playwright + chromium**，無頭瀏覽器
 - **效果**：寫腳本，自動搶LonCat內測名額 (演唱會門票！？ 嘘~~<img width="24" height="24" alt="1f92b" src="https://github.com/user-attachments/assets/624537c1-81d5-467f-bb67-b783853595ec" />
@@ -117,7 +117,7 @@ Peter Steinberger 認為：
 <img width="306" height="503" alt="image" src="https://github.com/user-attachments/assets/9f277e7c-5759-43ee-b13e-2147849b7a27" />
 <img width="297" height="585" alt="image" src="https://github.com/user-attachments/assets/49d1adae-38b3-4a63-ad61-fdbd3a833b6f" />
 
-### 案例 9：中華民國30年來出生率vs死亡率變化
+### 案例 9：👩‍⚕ 中華民國30年來出生率vs死亡率變化
 - **情境**：Chart.js 趨勢圖 — 30 年出生率vs死亡率變化一目瞭然
 - **做法**：新增twinkle hub技能，詢問「30年來死亡率趨勢，合併出生率的圖表，html格式」
 - **效果**：圖表上 2019 年有個明顯的 ✕ 標記，就是兩條線交叉的位置。滑鼠移上去可以看到每年的詳細數字。少子化 + 高齡化的「剪刀差」非常明顯 😬
