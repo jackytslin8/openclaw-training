@@ -125,6 +125,12 @@ api key：xxxxxxx
 - [📊 台灣出生 vs 死亡人數 — 30 年交叉趨勢](https://jackytslin8.github.io/openclaw-training/case9/taiwan_birth_death_30y_people.html)
 - [📊 台灣出生 vs 死亡 — 2015~2026 最新趨勢](https://jackytslin8.github.io/openclaw-training/case9/taiwan_birth_death_2015_2026.html)
 
+### 案例 10：🚂 臺鐵每日運輸量
+- **情境**：2026/06/01（週日）日運輸量
+- **做法**：prompt：查找昨天台鐵運輸量，openclaw自動透過台鐵api查找
+- **效果**：查到後製作html
+- [🛲 台鐵單日運輸量](https://jackytslin8.github.io/openclaw-training/case9/tra_20260601.html)
+
 
 ## 五、更多創意應用點子
 
