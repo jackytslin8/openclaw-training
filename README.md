@@ -59,9 +59,9 @@ Peter Steinberger 認為：
 
 ### 案例 2：🔌 水電帳單自動記錄
 
-- **情境**：Gmail 收到台電帳單 email，手動抄金額很煩
+- **情境**：Gmail 收到台電帳單 email，想看長期用電狀況，手動整理很麻煩
 - **做法**：偵測帳單 email → 自動提取金額/電號 → 寫入 Google Sheets
-- **效果**：完全自動，還能計算信用卡回饋
+- **效果**：全自動，且提供完整報表
 - [電費趨勢](https://jackytslin8.github.io/openclaw-training/case9/%E9%9B%BB%E8%B2%BB%E8%B6%A8%E5%8B%A2.html)
 
 
