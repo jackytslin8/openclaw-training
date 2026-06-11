@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMP 免費練習資源整理</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        .section {
+            background: rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.2s;
+        }
+        .section:hover { transform: translateY(-2px); }
+        .section-icon { font-size: 1.5em; margin-right: 8px; }
+        .section-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .resource-list { list-style: none; padding: 0; }
+        .resource-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .resource-list li:last-child { border-bottom: none; }
+        .resource-name {
+            font-weight: bold;
+            color: #ffd200;
+            font-size: 1.05em;
+        }
+        .resource-desc { color: #bbb; margin-top: 4px; font-size: 0.9em; }
+        .resource-link {
+            display: inline-block;
+            margin-top: 6px;
+            color: #7ec8e3;
+            text-decoration: none;
+            font-size: 0.85em;
+            word-break: break-all;
+        }
+        .resource-link:hover { text-decoration: underline; }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+        .badge-free { background: #27ae60; color: #fff; }
+        .badge-app { background: #8e44ad; color: #fff; }
+        .badge-video { background: #e74c3c; color: #fff; }
+        .badge-pdf { background: #e67e22; color: #fff; }
+
+        .tip-box {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #ffd200;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-top: 20px;
+        }
+        .tip-box h3 { color: #ffd200; margin-bottom: 10px; }
+        .tip-box ol { padding-left: 20px; }
+        .tip-box li { margin-bottom: 6px; line-height: 1.6; }
+
+        .exam-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .info-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .info-card .num {
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .info-card .label { color: #aaa; font-size: 0.85em; margin-top: 4px; }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 PMP 免費練習資源整理</h1>
+        <p class="subtitle">國際專案管理師（Project Management Professional）考試準備資源</p>
+
+        <!-- 考試資訊 -->
+        <div class="section">
+            <div class="section-title"><span class="section-icon">📝</span>2026 考試資訊</div>
+            <div class="exam-info">
+                <div class="info-card">
+                    <div class="num">180</div>
+                    <div class="label">題目數量</div>
+                </div>
+                <div class="info-card">
+                    <div class="num">230</div>
+                    <div class="label">考試時間（分鐘）</div>
+                </div>
+                <div class="info-card">
+                    <div class="num">3</div>
+                    <div class="label">考試領域</div>
+                </div>
+                <div class="info-card">
+                    <div class="num">~65%</div>
+                    <div class="label">據傳及格線</div>
+                </div>
+            </div>
+            <p style="margin-top:14px; color:#bbb; font-size:0.9em;">
+                三大領域：<strong style="color:#ffd200">人員（People）</strong>、
+                <strong style="color:#ffd200">流程（Process）</strong>、
+                <strong style="color:#ffd200">業務環境（Business Environment）</strong><br>
+                題型含：選擇題、多選題、拖圖題（情境題為主）
+            </p>
+        </div>
+
+        <!-- 手機 APP -->
+        <div class="section">
+            <div class="section-title"><span class="section-icon">📱</span>手機 APP（免費）</div>
+            <ul class="resource-list">
+                <li>
+                    <div class="resource-name">PMP Exam Prep & Mock App 2026 <span class="badge badge-app">Android</span></div>
+                    <div class="resource-desc">免費，含無限次測試、模擬考、錯題複習，涵蓋預測型/敏捷型/混合型專案管理</div>
+                    <a class="resource-link" href="https://play.google.com/store/apps/details?id=com.bilantela.pmpexamprepapp" target="_blank">👉 Google Play 下載</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 線上題庫 -->
+        <div class="section">
+            <div class="section-title"><span class="section-icon">🌐</span>線上免費題庫</div>
+            <ul class="resource-list">
+                <li>
+                    <div class="resource-name">PM PrepCast 免費模擬考 <span class="badge badge-free">120題</span></div>
+                    <div class="resource-desc">120 題免費練習，有計時器，模擬真實考試環境，含詳細解答</div>
+                    <a class="resource-link" href="https://www.project-management-prepcast.com/pmp-practice-exam-questions-sample-test" target="_blank">👉 開始練習</a>
+                </li>
+                <li>
+                    <div class="resource-name">希賽網 PMP 每日一練 <span class="badge badge-free">免費</span></div>
+                    <div class="resource-desc">每日免費模擬題 + 可下載 2026 模擬卷 PDF + 思維導圖</div>
+                    <a class="resource-link" href="https://www.educity.cn/pmp/c1250-1.html" target="_blank">👉 每日刷題</a>
+                </li>
+                <li>
+                    <div class="resource-name">環球網校 PMP 模擬題 <span class="badge badge-pdf">PDF下載</span></div>
+                    <div class="resource-desc">2026 年模擬試題卷（100題）+ 計算公式匯總 + 敏捷題庫可下載</div>
+                    <a class="resource-link" href="https://www.hqwx.com/pmp-kaoshi/moniti" target="_blank">👉 下載資源</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- YouTube 影片題庫 -->
+        <div class="section">
+            <div class="section-title"><span class="section-icon">🎬</span>YouTube / B站 免費影片題庫</div>
+            <ul class="resource-list">
+                <li>
+                    <div class="resource-name">iPASSCamp PMP 題庫解析 <span class="badge badge-video">YouTube</span></div>
+                    <div class="resource-desc">完整題庫講解系列，包含實力測驗 + 考試寶典</div>
+                    <a class="resource-link" href="https://www.youtube.com/watch?v=t1iNFsVixqQ" target="_blank">👉 觀看影片</a>
+                </li>
+                <li>
+                    <div class="resource-name">B站 PMP 必刷 600 題 <span class="badge badge-video">B站</span></div>
+                    <div class="resource-desc">零基礎速成，逐題精講，從易到難，多種解法舉一反三</div>
+                    <a class="resource-link" href="https://search.bilibili.com/all?keyword=PMP必刷600題" target="_blank">👉 搜尋影片</a>
+                </li>
+                <li>
+                    <div class="resource-name">B站 PMP 歷年真題大合集 <span class="badge badge-video">B站</span></div>
+                    <div class="resource-desc">保姆級真題講解，一套影片帶你刷透所有考點，附配套文檔</div>
+                    <a class="resource-link" href="https://search.bilibili.com/all?keyword=PMP真題題庫" target="_blank">👉 搜尋影片</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 社群推薦 -->
+        <div class="section">
+            <div class="section-title"><span class="section-icon">💬</span>社群推薦資源</div>
+            <ul class="resource-list">
+                <li>
+                    <div class="resource-name">Reddit r/pmp <span class="badge badge-free">免費</span></div>
+                    <div class="resource-desc">有人分享兩個免費 120 題模擬考（基於 PMBOK 第6版），有計時功能，考生經驗分享</div>
+                    <a class="resource-link" href="https://www.reddit.com/r/pmp/" target="_blank">👉 前往 Reddit</a>
+                </li>
+                <li>
+                    <div class="resource-name">Medium PMP 備考心得</div>
+                    <div class="resource-desc">自學通過 PMP 拿到 5 個 Above Target 的經驗分享，含模擬考正確率建議</div>
+                    <a class="resource-link" href="https://medium.com/@eugenexul4/" target="_blank">👉 閱讀文章</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 建議刷題順序 -->
+        <div class="tip-box">
+            <h3>💡 建議刷題順序</h3>
+            <ol>
+                <li>先到 <strong>環球網校</strong> 下載 2026 模擬卷 PDF，了解題型</li>
+                <li>用 <strong>PM PrepCast</strong> 的 120 題免費線上模擬（有計時），評估自己的程度</li>
+                <li>手機裝 <strong>PMP Exam Prep & Mock App</strong>，利用零碎時間刷題</li>
+                <li>不懂的觀念看 <strong>iPASSCamp YouTube</strong> 或 <strong>B站 600題</strong> 講解</li>
+                <li>持續刷到模擬考穩定 > 70%，再去報名考試</li>
+            </ol>
+        </div>
+
+        <footer>
+            整理日期：2026-06-11 | 資源來源：網路公開資料
+        </footer>
+    </div>
+</body>
+</html>
