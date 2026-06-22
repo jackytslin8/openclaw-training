@@ -135,6 +135,7 @@ api key：xxxxxxx
 - **情境**：2026/7/1 火車時刻改點
 - **做法**：prompt：7/1 火車時刻表即將改點，假設下班時間17:00，騎到竹中站停好車，大約17:15，如果要在19:00之前到苗栗，請列出最佳組合。TPASS不能坐自強號3000型，找html格式的火車時刻表 (OCR辨識PDF的火車時刻表，會失誤)
 - **效果**：提供最佳搭車組合
+- 台鐵e訂通
 <img width="273" height="607" alt="Screenshot_2026-06-12-17-25-17-634_tw gov tra twtraffic" src="https://github.com/user-attachments/assets/ab9447cd-946a-47bc-be90-7ae3ed4aa084" />
 <img width="273" height="607" alt="Screenshot_2026-06-12-17-25-31-963_tw gov tra twtraffic" src="https://github.com/user-attachments/assets/99cab70b-1080-42f5-b3d2-e923437744d7" />
 <img width="458" height="314" alt="2026-06-18_082052" src="https://github.com/user-attachments/assets/4be9375f-02d8-4e54-9de0-efb9fc6f03d8" />
