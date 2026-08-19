@@ -90,6 +90,7 @@ Peter Steinberger 認為：
 - **效果**：幾分鐘內完成可玩的遊戲
 [消消樂](https://jackytslin8.github.io/openclaw-training/case9/消消樂.html)
 [暗棋_Longcat](https://jackytslin8.github.io/openclaw-training/case9/暗棋_Longcat.html)
+[問答戰鬥遊戲 (小六社會科)](https://deluxe-horse-fedab0.netlify.app/)
 
 ### 案例 6：🚲︎ 即時Ubike數量查詢
 
