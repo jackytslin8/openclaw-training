@@ -88,8 +88,12 @@ Peter Steinberger 認為：
 - **情境**：想快速做一個小遊戲
 - **做法**：自然語言描述需求 → AI 寫出網頁遊戲（消消樂、暗棋）
 - **效果**：幾分鐘內完成可玩的遊戲
+可上傳到[Netlify](https://app.netlify.com/signup?utm_medium=referral&utm_source=partnerstack&source=242f756f2b3e&pscd=join.netlify.com&ps_partner_key=MjQyZjc1NmYyYjNl&ps_xid=sHtul1CZrSctNw&gsxid=sHtul1CZrSctNw&gspk=MjQyZjc1NmYyYjNl&gad_source=1&gad_campaignid=24135456665&gbraid=0AAAABEX4nmvXS-2ssjEw9Vnq6C2nCRHq_&gclid=CjwKCAjwhZDUBhBGEiwAbi5bjoKljoRt_yPIxM7DV4kB1DzD8HxXmiWL2T94Z04OQLuu9mSVO1NQMRoCZaIQAvD_BwE)
+
 [消消樂](https://jackytslin8.github.io/openclaw-training/case9/消消樂.html)
+
 [暗棋_Longcat](https://jackytslin8.github.io/openclaw-training/case9/暗棋_Longcat.html)
+
 [問答戰鬥遊戲 (小六社會科)](https://deluxe-horse-fedab0.netlify.app/)
 
 ### 案例 6：🚲︎ 即時Ubike數量查詢
