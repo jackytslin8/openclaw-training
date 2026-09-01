@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📝 OpenClaw 案例 10 — 用 Grill-Me + Google Forms API 建立 10 分鐘測驗</title>
+<style>
+  :root { --bg: #0f172a; --card: #1e293b; --code: #0b1220; --accent: #38bdf8; --accent2: #818cf8; --text: #e2e8f0; --muted: #94a3b8; --border: #334155; --green: #4ade80; --yellow: #fbbf24; --red: #f87171; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans TC', system-ui, sans-serif; padding: 24px; line-height: 1.7; }
+  .header { text-align: center; margin-bottom: 40px; padding: 32px 0; border-bottom: 1px solid var(--border); }
+  .header h1 { font-size: 1.8rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .header .subtitle { color: var(--muted); font-size: 0.95rem; }
+  .container { max-width: 880px; margin: 0 auto; }
+  h2 { color: var(--accent); margin: 32px 0 16px; font-size: 1.3rem; border-left: 3px solid var(--accent); padding-left: 12px; }
+  h3 { color: var(--accent2); margin: 20px 0 10px; font-size: 1.05rem; }
+  p { margin-bottom: 12px; color: var(--text); }
+  ul, ol { margin: 8px 0 16px 28px; }
+  li { margin-bottom: 6px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 16px 0; }
+  .card.highlight { border-color: var(--accent); background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(129,140,248,0.08)); }
+  .card.success { border-color: var(--green); }
+  .card.warn { border-color: var(--yellow); }
+  .card.danger { border-color: var(--red); }
+  pre { background: var(--code); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 0.85rem; font-family: 'JetBrains Mono', 'Courier New', monospace; color: #cbd5e1; margin: 12px 0; line-height: 1.5; }
+  code { background: rgba(56,189,248,0.15); color: var(--accent); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; font-family: 'JetBrains Mono', 'Courier New', monospace; }
+  pre code { background: none; color: inherit; padding: 0; }
+  .tag { display: inline-block; background: rgba(56,189,248,0.2); color: var(--accent); padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; margin-right: 6px; }
+  .tag.green { background: rgba(74,222,128,0.2); color: var(--green); }
+  .tag.yellow { background: rgba(251,191,36,0.2); color: var(--yellow); }
+  .tag.red { background: rgba(248,113,113,0.2); color: var(--red); }
+  .btn { display: inline-block; background: var(--accent); color: #0f172a; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 8px 8px 8px 0; }
+  .btn:hover { background: var(--accent2); }
+  .btn.secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+  th { background: #1a2744; color: var(--accent); padding: 10px 12px; text-align: left; }
+  td { padding: 8px 12px; border-top: 1px solid var(--border); }
+  tr:nth-child(even) td { background: rgba(56,189,248,0.03); }
+  .step { display: flex; gap: 16px; margin: 16px 0; }
+  .step .num { flex-shrink: 0; width: 36px; height: 36px; background: var(--accent); color: #0f172a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+  .step .content { flex: 1; }
+  .lesson { background: rgba(74,222,128,0.1); border-left: 3px solid var(--green); padding: 12px 16px; margin: 12px 0; border-radius: 0 8px 8px 0; }
+  .lesson::before { content: "💡 教訓："; color: var(--green); font-weight: 600; }
+  .footer { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .meta { display: flex; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+  .meta span::before { content: "•"; margin-right: 6px; color: var(--accent); }
+  .meta span:first-child::before { content: ""; margin: 0; }
+  .pill { display: inline-block; padding: 2px 8px; background: rgba(56,189,248,0.15); color: var(--accent); border-radius: 4px; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📝 用 Grill-Me + Google Forms API 建立 10 分鐘測驗</h1>
+  <div class="subtitle">OpenClaw 案例 #10 — 從 PDF 考古題到可作答的 Google 表單</div>
+  <div class="meta">
+    <span>2026-09-01</span>
+    <span>憲哥 (jackytslin0)</span>
+    <span>Grill-Me skill + Google Forms API</span>
+  </div>
+</div>
+
+<div class="container">
+
+<h2>🎯 案例目標</h2>
+<div class="card highlight">
+  <p>從一份 PDF 期中考考古題，<strong>透過 OpenClaw 的 Grill-Me skill 反覆詰問設計決策</strong>，最後用 <strong>Google Forms API + Drive API</strong> 自動建立一份帶有 10 分鐘計時、提交後立即顯示分數與正解的測驗表單。</p>
+  <p style="margin-top:12px"><strong>產出</strong>：10 題社會科選擇題（康軒版，獅湖國小六年級上學期期中考範圍），分數 20 分，Quiz 模式全自動批改。</p>
+</div>
+
+<h2>🔁 流程全貌</h2>
+<div class="card">
+<pre><code>使用者上傳 PDF
+   ↓
+Read 工具抽取文字 (PyMuPDF)
+   ↓
+Grill-Me skill：反覆詰問決策樹（3 rounds / 13 questions）
+   ↓
+Forms API: forms.create() → batchUpdate()
+   ├── updateFormInfo (description)
+   ├── updateSettings (isQuiz = true)
+   └── createItem × 11 (座號 + 10 題 + 答案)
+   ↓
+Forms API: moveItem × 9 (createItem 預設插 index 1，順序反轉)
+   ↓
+Drive API: permissions.create (anyone:reader)
+   ↓
+交付學生作答網址</code></pre>
+</div>
+
+<h2>🧆 Grill-Me 決策樹紀錄（精華）</h2>
+<p>Grill-Me 是 OpenClaw 的「反覆詰問」skill，會把所有未決定的設計節點列出來、給建議答案，等使用者拍板才推進。這次共 3 輪 / 13 個問題。</p>
+
+<h3>Round 1 — 來源與題型</h3>
+<table>
+  <tr><th>問題</th><th>使用者決定</th><th>助手建議</th></tr>
+  <tr><td>Q1 題目來源</td><td>傳 PDF 給助手</td><td>傳 PDF / Word / 截圖</td></tr>
+  <tr><td>Q2 單元範圍</td><td>混合抽</td><td>5 個單元各 1~2 題</td></tr>
+  <tr><td>Q3 題型</td><td>全選擇題</td><td>全選擇題（4 選 1）</td></tr>
+  <tr><td>Q4 作答時間</td><td>回家練習 10 分鐘</td><td>回家作業</td></tr>
+  <tr><td>Q5 收集座號</td><td>要</td><td>第一題當識別欄</td></tr>
+  <tr><td>Q6 顯示分數</td><td>馬上看分數與正解</td><td>提交後顯示</td></tr>
+  <tr><td>Q7 作答次數</td><td>3 次（自律）</td><td>表單說明自律</td></tr>
+  <tr><td>Q8 教材版本</td><td>康軒</td><td>混搭無妨</td></tr>
+</table>
+
+<h3>Round 2 — 題目選材與限制</h3>
+<table>
+  <tr><th>問題</th><th>使用者決定</th><th>助手建議</th></tr>
+  <tr><td>Q9 有圖題怎麼辦</td><td>跳過那題</td><td>第二大題 Q6 依賴人口統計圖，跳過</td></tr>
+  <tr><td>Q10 選材偏好</td><td>重點複習 + 期中考範圍</td><td>3 是非 + 3 選擇 + 2 中華民國 + 2 二二八</td></tr>
+  <tr><td>Q11 作答 3 次</td><td>表單說明自律</td><td>不限制 + 30 分鐘內 3 次</td></tr>
+  <tr><td>Q12 時間限制</td><td>10 分鐘</td><td>Quiz 模式啟用 limitTime</td></tr>
+  <tr><td>Q13 座號/姓名</td><td>只要座號</td><td>第一題「請輸入座號（1~30）」</td></tr>
+</table>
+
+<h3>Round 3 — API 啟用</h3>
+<table>
+  <tr><th>問題</th><th>使用者決定</th><th>助手建議</th></tr>
+  <tr><td>Q14 表單建立方式</td><td>啟用 Google Forms API（方案 A）</td><td>2 分鐘開 API → 程式建表單</td></tr>
+</table>
+
+<h2>🛠️ 實作：Forms API 呼叫</h2>
+
+<h3>Step 1 — 啟用 Google Forms API</h3>
+<div class="card">
+  <p>Google Cloud Console → 啟用 <code>forms.googleapis.com</code>：</p>
+  <pre><code>https://console.developers.google.com/apis/api/forms.googleapis.com/overview?project=526007414074</code></pre>
+  <p>OAuth scope 需要：<code>https://www.googleapis.com/auth/forms.body</code>（可選）+ <code>drive</code>（共享設定用）</p>
+</div>
+
+<h3>Step 2 — 建立表單（只給 title）</h3>
+<pre><code>POST https://forms.googleapis.com/v1/forms
+Body: { "info": { "title": "六年級社會科 10 分鐘複習小考" } }</code></pre>
+<div class="lesson">建立時只能給 title，description 必須用 batchUpdate 補上（API 會拒絕「Only info.title can be set when creating a form」）。</div>
+
+<h3>Step 3 — batchUpdate 三件套：描述 + Quiz + 11 題</h3>
+<pre><code>POST /v1/forms/{formId}:batchUpdate
+{
+  "requests": [
+    { "updateFormInfo":   { "info": { "description": "..." }, "updateMask": "description" } },
+    { "updateSettings":   { "settings": { "quizSettings": { "isQuiz": true } }, "updateMask": "quizSettings.isQuiz" } },
+    { "createItem":       { "item": { "title": "請輸入座號", "questionItem": { ... } }, "location": { "index": 0 } } },
+    { "createItem":       { "item": { "title": "...", "questionItem": { "question": { "choiceQuestion": {...}, "grading": { "pointValue": 2, "correctAnswers": { "answers": [{"value": "..."}] } } } } }, "location": { "index": 1 } } }
+  ]
+}</code></pre>
+<p>11 題一次送出。選擇題用 <code>choiceQuestion.type: "RADIO"</code>，是非題也用 RADIO（選項 "是" / "否"），<code>grading.correctAnswers</code> 設正解。</p>
+
+<h3>Step 4 — moveItem 重排（關鍵！）</h3>
+<div class="card warn">
+  <p><strong>坑</strong>：<code>createItem.location.index</code> 在多次 createItem 同 batch 內是依序生效，但當所有題目都「插到 index 1」時，後加的會跑到前面，<strong>順序會反轉</strong>。</p>
+  <p><strong>解法</strong>：用 <code>moveItem</code> 把「當前 index 1」的題目依序搬到正確位置（反轉手法：每次把 index 1 搬到 target index，依序從 10、9、8...2）。</p>
+</div>
+<pre><code>{
+  "moveItem": {
+    "originalLocation": { "index": 1 },
+    "newLocation":      { "index": 10 }
+  }
+}</code></pre>
+<div class="lesson"><strong>欄位陷阱</strong>：Forms API 的 <code>MoveItemRequest</code> 欄位是 <code>originalLocation</code> + <code>newLocation</code>（都是 Location 物件含 index），<strong>不是</strong> <code>originalItemId</code> + <code>newIndex</code>（那是常見的猜測，會得到「Unknown name "originalItemId" at 'requests[0].move_item'」）。</div>
+
+<h3>Step 5 — Drive 公開權限（必做！）</h3>
+<div class="card danger">
+  <p><strong>坑</strong>：API 建好的表單預設是 <strong>私人</strong>，只有 owner 看得見。雖然 <code>publishState.isAcceptingResponses = true</code>，但學生點連結會看到「表單已不接受回覆」。</p>
+</div>
+<pre><code>POST https://www.googleapis.com/drive/v3/files/{formId}/permissions
+{
+  "role": "reader",
+  "type": "anyone",
+  "allowFileDiscovery": false
+}</code></pre>
+<div class="lesson">Forms API 沒辦法直接開公開權限，必須用 Drive API 的 <code>permissions.create</code> 補上「anyone:reader」。</div>
+
+<h2>📋 10 題內容（康軒版 六年級社會科上學期）</h2>
+<table>
+  <tr><th>#</th><th>出處</th><th>題目</th><th>答案</th></tr>
+  <tr><td>1</td><td>(座號)</td><td>請輸入座號（1~30）</td><td>文字</td></tr>
+  <tr><td>2</td><td>一-2</td><td>現在的家庭型態以小家庭、夫妻家庭、單人家庭比率較高</td><td>是</td></tr>
+  <tr><td>3</td><td>一-3</td><td>為了促進族群融合，應避免與不同習俗文化接觸</td><td>否</td></tr>
+  <tr><td>4</td><td>一-8</td><td>統一發票是政府繳納營業稅給商家的交易證明</td><td>否</td></tr>
+  <tr><td>5</td><td>二-1</td><td>憲法義務→興建公共設施</td><td>依規定繳納稅金</td></tr>
+  <tr><td>6</td><td>二-2</td><td>早期教育照片錯誤註解</td><td>有的學生穿便服上學</td></tr>
+  <tr><td>7</td><td>二-5</td><td>中華民國在臺事件先後順序</td><td>ABEDC</td></tr>
+  <tr><td>8</td><td>六-1</td><td>清帝國割臺後孫中山領導革命</td><td>是</td></tr>
+  <tr><td>9</td><td>八-1</td><td>二二八時空背景</td><td>民國34~38年</td></tr>
+  <tr><td>10</td><td>八-3</td><td>官民衝突事件</td><td>二二八事件</td></tr>
+  <tr><td>11</td><td>八-5</td><td>遭殺害的社會名人</td><td>陳澄波</td></tr>
+</table>
+
+<h2>🧠 5 大教訓（給未來的自己）</h2>
+
+<div class="lesson">Forms API 建立的表單預設是「私人」，必須另外用 Drive API 加 <code>anyone:reader</code> 才能讓學生填。isAcceptingResponses=true 跟 isPublished=true 都無法保證公開。</div>
+
+<div class="lesson"><code>createItem.location.index</code> 在 batch 內多次使用時，後加的會跑到前面 → 順序反轉。用 <code>moveItem</code> 從「當前 index 1」依序搬到目標 index，是最簡潔的反轉手法。</div>
+
+<div class="lesson">Forms API 的 <code>MoveItemRequest</code> 欄位是 <code>originalLocation</code> + <code>newLocation</code>，不是 <code>originalItemId</code> + <code>newIndex</code>。要查文件不要憑印象。</div>
+
+<div class="lesson">Forms API 沒辦法設定「作答時間限制」與「提交後顯示正解」這兩個測驗選項 — 必須從 UI 手動開啟。Grill-Me 階段就應該告知使用者哪些自動化能做、哪些要手動。</div>
+
+<div class="lesson">Grill-Me 流程的價值：把 13 個隱含決策攤開，<strong>避免助手自作主張</strong>。例如「作答 3 次」實際上 Forms 只能 1 次或不限制 → 提早說明讓使用者選「表單說明自律」，省下事後改表單的工。</div>
+
+<h2>🔗 實成品</h2>
+<div class="card success">
+  <p><strong>📝 表單名稱</strong>：六年級社會科 10 分鐘複習小考</p>
+  <p><strong>🔗 學生作答網址</strong>：</p>
+  <pre><code>https://docs.google.com/forms/d/e/1FAIpQLScpw3wGEXjPSZg49j263odfO1ch0APPG1K7M83O3sTKYQuNmg/viewform</code></pre>
+  <p><strong>✏️ 編輯用（管理）網址</strong>：</p>
+  <pre><code>https://docs.google.com/forms/d/1nwt5vPe-CJSG9SqpZ-7SflwpFwIP69P2Yt2vZO1yWNM/edit</code></pre>
+  <p style="margin-top:12px"><span class="tag green">已發布</span> <span class="tag">11 題</span> <span class="tag yellow">Quiz 模式</span> <span class="tag">任何人可填</span></p>
+  <p style="margin-top:12px;color:var(--muted)">剩下兩個測驗選項（10 分鐘限制 + 提交後顯示正解）需在 UI 手動開啟，API 無法設定。</p>
+</div>
+
+<h2>📦 工具/技術清單</h2>
+<div class="card">
+  <ul>
+    <li><span class="pill">OpenClaw</span> Grill-Me skill（反覆詰問決策樹）</li>
+    <li><span class="pill">PDF</span> PyMuPDF (fitz) 抽取文字</li>
+    <li><span class="pill">API</span> Google Forms API <code>forms.create</code> + <code>forms.batchUpdate</code></li>
+    <li><span class="pill">API</span> Google Drive API <code>permissions.create</code>（公開權限）</li>
+    <li><span class="pill">OAuth</span> gog keyring refresh_token + access_token cache</li>
+  </ul>
+</div>
+
+<div class="footer">
+  📚 OpenClaw 訓練教材案例 #10 • 由 OpenClaw AI 整理<br>
+  原始任務：建立六年級社會科 10 分鐘測驗（PDF 考古題 → Google Forms）<br>
+  生成時間：2026-09-01 04:28 UTC
+</div>
+
+</div>
+
+</body>
+</html>
