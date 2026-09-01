@@ -148,6 +148,10 @@ api key：xxxxxxx
 <img width="458" height="314" alt="2026-06-18_082052" src="https://github.com/user-attachments/assets/4be9375f-02d8-4e54-9de0-efb9fc6f03d8" />
 <img width="465" height="245" alt="2026-06-18_081910" src="https://github.com/user-attachments/assets/a892ee2b-7192-4474-9ca9-2e016ac18fa1" />
 
+### 案例 12：如何自動出考題、問卷？
+- **情境**：國小六年級社會科考題
+- **做法**：prompt：/grill_me 我想把國小六年級上學期的社會科，從這個網站 https://www.tcool.cc/#google_vignette 抓出10題的練習題給學生做，想使用google表單 https://docs.google.com/forms/u/0/ 來做
+- **效果**：[社會科考出題流程](https://github.com/jackytslin8/openclaw-training/blob/master/case10/google_forms_social_quiz.html)
 
 
 ## 五、更多創意應用點子
