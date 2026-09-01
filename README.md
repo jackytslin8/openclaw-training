@@ -94,7 +94,6 @@ Peter Steinberger 認為：
 
 [暗棋_Longcat](https://jackytslin8.github.io/openclaw-training/case9/暗棋_Longcat.html)
 
-[問答戰鬥遊戲 (小六社會科)](https://deluxe-horse-fedab0.netlify.app/)
 
 ### 案例 6：🚲︎ 即時Ubike數量查詢
 
