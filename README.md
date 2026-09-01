@@ -152,7 +152,7 @@ api key：xxxxxxx
 - **情境**：國小六年級社會科考題
 - **做法**：prompt：/grill_me 我想把國小六年級上學期的社會科，從這個網站 https://www.tcool.cc/#google_vignette 抓出10題的練習題給學生做，想使用google表單 https://docs.google.com/forms/u/0/
 - **極力推薦新增的Skill，可視化圖表**：https://github.com/antvis/infographic
-- **效果**：[社會科考出題流程](https://github.com/jackytslin8/openclaw-training/blob/master/case10/google_forms_social_quiz.html)
+- **效果**：[社會科考題實作流程](https://github.com/jackytslin8/openclaw-training/blob/master/case10/google_forms_social_quiz.html)
 
 
 ## 五、更多創意應用點子
