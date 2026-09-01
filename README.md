@@ -150,7 +150,8 @@ api key：xxxxxxx
 
 ### 案例 12：如何自動出考題、問卷？
 - **情境**：國小六年級社會科考題
-- **做法**：prompt：/grill_me 我想把國小六年級上學期的社會科，從這個網站 https://www.tcool.cc/#google_vignette 抓出10題的練習題給學生做，想使用google表單 https://docs.google.com/forms/u/0/ 來做
+- **做法**：prompt：/grill_me 我想把國小六年級上學期的社會科，從這個網站 https://www.tcool.cc/#google_vignette 抓出10題的練習題給學生做，想使用google表單 https://docs.google.com/forms/u/0/
+- **極力推薦新增的Skill**：https://github.com/antvis/infographic
 - **效果**：[社會科考出題流程](https://github.com/jackytslin8/openclaw-training/blob/master/case10/google_forms_social_quiz.html)
 
 
