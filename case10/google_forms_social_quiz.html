@@ -171,6 +171,19 @@ Body: { "info": { "title": "六年級社會科 10 分鐘複習小考" } }</code>
 }</code></pre>
 <div class="lesson">Forms API 沒辦法直接開公開權限，必須用 Drive API 的 <code>permissions.create</code> 補上「anyone:reader」。</div>
 
+<h2>🔗 Step 6 — 連結到試算表（UI 手動 30 秒）</h2>
+<div class="card warn">
+  <p><strong>坑</strong>：Forms API <strong>沒有</strong>設定 <code>linkedSheetId</code> 的端點（v1 和 v1beta 都沒有這個欄位）。即使先用 Sheets API 建好試算表，UI 點「選取現有試算表」時 Google 仍會<strong>自動建立新試算表</strong>，而不是用 API 建的那個。</p>
+</div>
+<ol>
+  <li>開表單 → <strong>「回覆」</strong>分頁</li>
+  <li>點 <strong>「連結到試算表」</strong>（綠色 Google Sheets 圖示）</li>
+  <li>選 <strong>「選取現有試算表」</strong></li>
+  <li>選 API 預先建好的試算表（Google 會自動把它的副本掛上，標題加「(回覆)」）</li>
+  <li>完成 → 表單回覆自動寫入試算表</li>
+</ol>
+<div class="lesson">實務上 Google UI 流程會忽略你選的「現有試算表」並建立新檔（標題 = 原表單標題 + "(回覆)"）。先把「孤兒試算表」刪掉是必要的清理動作。最終存回覆的試算表是 Google 自己建的，並不是 API 預先準備的那個。</div>
+
 <h2>📋 10 題內容（康軒版 六年級社會科上學期）</h2>
 <table>
   <tr><th>#</th><th>出處</th><th>題目</th><th>答案</th></tr>
@@ -199,6 +212,8 @@ Body: { "info": { "title": "六年級社會科 10 分鐘複習小考" } }</code>
 
 <div class="lesson">Grill-Me 流程的價值：把 13 個隱含決策攤開，<strong>避免助手自作主張</strong>。例如「作答 3 次」實際上 Forms 只能 1 次或不限制 → 提早說明讓使用者選「表單說明自律」，省下事後改表單的工。</div>
 
+<div class="lesson">Google 帳號管理：API 操作的帳號（<code>jackytslin0@gmail.com</code>）和瀏覽器登入的帳號（<code>jackytslin8@gmail.com</code>）如果不同，會看不到「回覆」分頁、表單也找不到。解法：用 Drive API 給瀏覽器帳號加 <code>writer</code> 權限，就能跨帳號管理同一份檔案。</div>
+
 <h2>🔗 實成品</h2>
 <div class="card success">
   <p><strong>📝 表單名稱</strong>：六年級社會科 10 分鐘複習小考</p>
@@ -206,8 +221,10 @@ Body: { "info": { "title": "六年級社會科 10 分鐘複習小考" } }</code>
   <pre><code>https://docs.google.com/forms/d/e/1FAIpQLScpw3wGEXjPSZg49j263odfO1ch0APPG1K7M83O3sTKYQuNmg/viewform</code></pre>
   <p><strong>✏️ 編輯用（管理）網址</strong>：</p>
   <pre><code>https://docs.google.com/forms/d/1nwt5vPe-CJSG9SqpZ-7SflwpFwIP69P2Yt2vZO1yWNM/edit</code></pre>
-  <p style="margin-top:12px"><span class="tag green">已發布</span> <span class="tag">11 題</span> <span class="tag yellow">Quiz 模式</span> <span class="tag">任何人可填</span></p>
-  <p style="margin-top:12px;color:var(--muted)">剩下兩個測驗選項（10 分鐘限制 + 提交後顯示正解）需在 UI 手動開啟，API 無法設定。</p>
+  <p><strong>📊 回覆記錄試算表</strong>（已連結）:</p>
+  <pre><code>https://docs.google.com/spreadsheets/d/1hmHdrMG7OrCCq-vdDVWF9Baljz8LzRz6vfEtevJhc3M/edit</code></pre>
+  <p style="margin-top:12px"><span class="tag green">已發布</span> <span class="tag">11 題</span> <span class="tag yellow">Quiz 模式</span> <span class="tag">任何人可填</span> <span class="tag green">已連結試算表</span></p>
+  <p style="margin-top:12px;color:var(--muted)">剩下兩個測驗選項（10 分鐘限制 + 提交後顯示正解）需在 UI 手動開啟，API 無法設定。雙帳號管理：jackytslin0 (owner) + jackytslin8 (writer)，jackytslin0 建的「孤兒試算表」已刪除。</p>
 </div>
 
 <h2>📦 工具/技術清單</h2>
