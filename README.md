@@ -183,6 +183,15 @@ api key：xxxxxxx
 
 - **效果**：[課程管理平台](https://jackytslin8.github.io/course-schedule-old/)
 
+- ### 案例 13：錄音轉逐字稿配字幕
+- **情境**：錄音後，轉逐字稿，但Gemini、ChatGPT、MiMo STT幾乎都有限制25mb、10分鐘的Speed To Text辨識限制
+- **做法**：prompt1：這個音檔是單聲道，請幫我轉成雙聲道
+- <img width="537" height="413" alt="image" src="https://github.com/user-attachments/assets/9175ed2e-095c-4ca2-9a61-92db9b760769" />
+
+- prompt2：請給我整場演講的逐字稿，我要.srt的字幕檔，這是mp3檔案連結：https://drive.google.com/file/d/1n9rHduHFhdrzQldJ2qgfNlG_Z-Fw_kng/view?usp=drivesdk
+<img width="1019" height="501" alt="image" src="https://github.com/user-attachments/assets/b99e711a-05d7-4182-9488-95a05641b602" />
+
+- **成果**：[2026.9.10_陶晶瑩_演講](https://youtu.be/ZJGwfomDxmk)
 
 ## 五、更多創意應用點子
 
