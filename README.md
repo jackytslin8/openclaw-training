@@ -191,7 +191,7 @@ api key：xxxxxxx
 - prompt2：請給我整場演講的逐字稿，我要.srt的字幕檔，這是mp3檔案連結：https://drive.google.com/file/d/1n9rHduHFhdrzQldJ2qgfNlG_Z-Fw_kng/view?usp=drivesdk
 <img width="1019" height="501" alt="image" src="https://github.com/user-attachments/assets/b99e711a-05d7-4182-9488-95a05641b602" />
 
-- **成果**：[2026.9.10_陶晶瑩_演講](https://youtu.be/ZJGwfomDxmk)
+- **成果**：[2026.9.10_陶晶瑩_演講](https://youtu.be/8ur6C-n1i9M)
 
 ## 五、更多創意應用點子
 
