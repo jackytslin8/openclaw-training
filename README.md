@@ -29,9 +29,7 @@ Peter Steinberger 認為：
 這就是 OpenClaw 的精神——**降低技術門檻，讓每個人都能用自然語言驅動自動化**。
 
 - 📖 [文字版介紹](https://www.binance.com/zh-TC/square/post/298256668078434)
-- 🎬 [影片版介紹](https://www.facebook.com/watch/?v=1608171953553214)
-- 影片節錄 (https://streamable.com/nvw8fj)
-
+- 🎬 [影片版介紹](https://xianlunatv.duckdns.org/video/video.mp4)
 ---
 
 ## 三、跟傳統 AI 有什麼不同？
